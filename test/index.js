@@ -6,6 +6,7 @@
 
 var Undertaker = require('undertaker');
 var request = require('superagent');
+var es = require('event-stream');
 var should = require('should');
 var au = require('../index');
 var mocha = require('mocha');
@@ -39,10 +40,14 @@ describe('au', function() {
   });
 
   describe('src', function() {
-    it('should be a readable stream', function(done) {
+    it('should be a readable HTTP stream', function(done) {
       should.exist(au.src);
-      should.equal(au.src, request.get);
       should.exist(au.src(uri + '/ok').pipe);
+      done();
+    });
+
+    it('should be able to handle a list of urls', function(done) {
+      should.exist(au.src);
       done();
     });
   });

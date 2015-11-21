@@ -4,14 +4,17 @@
   "description": "Ultimate web scraper for your gold mining",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/index.js"
+    "test": "mocha test/index.js",
+    "sample": "node test/sample.js"
   },
   "author": "Farhad Ghayour <me@farhadg.com> (http://github.com/farhadg)",
   "license": "MIT",
   "dependencies": {
     "cheerio": "^0.19.0",
     "event-stream": "^3.3.2",
+    "mkdirp": "^0.5.1",
     "superagent": "^1.4.0",
+    "through2": "^2.0.0",
     "undertaker": "^0.13.0",
     "vinyl": "^1.1.0"
   },
