@@ -27,6 +27,7 @@ util.inherits(Au, TaskManager);
  */
 
 Au.prototype = {
+  extract: require('./lib/extract'),
   rename: require('./lib/rename'),
   link: require('./lib/link'),
   dest: require('./lib/dest'),
