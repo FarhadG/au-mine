@@ -13,7 +13,6 @@ var mkdirp = require('mkdirp');
 var isArray = Array.isArray;
 var util = require('util');
 var path = require('path');
-var url = require('url');
 var fs = require('fs');
 var rs = fs.ReadStream;
 var ws = fs.WriteStream;
@@ -44,7 +43,7 @@ function createReadableStream(url) {
   var stream = request.get(url);
   stream.filePath = stream.url
     .replace(/http|https|:\/\//g, '')
-    .replace(/\./g, '-');
+    .replace(/\/|\./g, '-');
   return stream;
 };
 
