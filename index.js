@@ -19,13 +19,6 @@ var rs = fs.ReadStream;
 var ws = fs.WriteStream;
 
 /**
- * Debugs
- */
-
-var debug = require('debug')('Au');
-var error = require('debug')('Au:error');
-
-/**
  * Initialize
  */
 
@@ -40,6 +33,22 @@ function Au() {
 util.inherits(Au, TaskManager);
 
 /**
+ * Private helper function for creating a readable stream
+ * and configuring a default file path.
+ *
+ * @param url
+ * @returns {Request}
+ */
+
+function createReadableStream(url) {
+  var stream = request.get(url);
+  stream.filePath = stream.url
+    .replace(/http|https|:\/\//g, '')
+    .replace(/\./g, '-');
+  return stream;
+};
+
+/**
  * Configures and sets the source
  */
 
@@ -47,7 +56,7 @@ Au.prototype.src = function src(urls) {
   urls = isArray(urls) ? urls : [urls];
   var stream = through();
   urls.forEach(function(url) {
-    stream.push(request.get(url));
+    stream.push(createReadableStream(url));
   });
   return stream;
 };
@@ -56,17 +65,16 @@ Au.prototype.src = function src(urls) {
  * Configures and sets the destination
  */
 
-// Helper function for setting a default filename from the URL
-function getFileName(stream) {
-  return stream.url.replace(/http|https|:\/\//g, '').replace(/\./g, '-');
-}
-
-Au.prototype.dest = function dest(output) {
-  mkdirp(path.join(__dirname, output));
-  return through(function(stream, enc, cb) {
-    var filePath = path.join(__dirname, output, getFileName(stream));
+Au.prototype.dest = function dest(output, done) {
+  function transform(stream, enc, cb) {
+    mkdirp(path.join(__dirname, output));
+    var filePath = path.join(__dirname, output, stream.filePath);
     stream.pipe(ws(filePath));
     cb(null, stream);
+  }
+  return through(transform, function(cb) {
+    console.log('done');
+    cb();
   });
 };
 

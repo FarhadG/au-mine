@@ -5,4 +5,4 @@ au.src([
   'http://www.yahoo.com',
   'http://www.bing.com'
 ])
-  .pipe(au.dest('./output'))
+  .pipe(au.dest('./output'));
