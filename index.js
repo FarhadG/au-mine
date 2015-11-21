@@ -5,7 +5,7 @@
  */
 
 var TaskManager = require('undertaker');
-var through = require('through2').obj;
+var through = require('through2');
 var request = require('superagent');
 var es = require('event-stream');
 var cheerio = require('cheerio');
@@ -54,7 +54,7 @@ function createReadableStream(url) {
 
 Au.prototype.src = function src(urls) {
   urls = isArray(urls) ? urls : [urls];
-  var stream = through();
+  var stream = through.obj();
   urls.forEach(function(url) {
     stream.push(createReadableStream(url));
   });
@@ -65,17 +65,14 @@ Au.prototype.src = function src(urls) {
  * Configures and sets the destination
  */
 
-Au.prototype.dest = function dest(output, done) {
+Au.prototype.dest = function dest(output) {
   function transform(stream, enc, cb) {
     mkdirp(path.join(__dirname, output));
     var filePath = path.join(__dirname, output, stream.filePath);
     stream.pipe(ws(filePath));
     cb(null, stream);
   }
-  return through(transform, function(cb) {
-    console.log('done');
-    cb();
-  });
+  return through.obj(transform);
 };
 
 /**
