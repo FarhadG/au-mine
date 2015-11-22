@@ -4,7 +4,8 @@
  * Module dependencies
  */
 
-var TaskManager = require('undertaker');
+var assign = require('object-assign');
+var Mine = require('./lib/mine');
 var util = require('util');
 
 /**
@@ -15,28 +16,26 @@ function Au() {
   if (!(this instanceof Au)) {
     return new Au();
   }
-  TaskManager.call(this);
-  this.streamStore = {};
+  Mine.call(this);
 }
 
 /**
- * Inherit from Undertaker
+ * Inherit from Mine
  */
 
-util.inherits(Au, TaskManager);
+util.inherits(Au, Mine);
 
 /**
  * Sets the accessible methods on the prototype
  */
 
-Au.prototype = {
+Au.prototype = assign(Au.prototype, {
   extract: require('./lib/extract'),
   rename: require('./lib/rename'),
-  link: require('./lib/link'),
   dest: require('./lib/dest'),
   src: require('./lib/src'),
   Au: Au
-};
+});
 
 /**
  * Expose an instance of Au
