@@ -12,6 +12,9 @@ var util = require('util');
  */
 
 function Au() {
+  if (!(this instanceof Au)) {
+    return new Au();
+  }
   TaskManager.call(this);
   this.streamStore = {};
 }
