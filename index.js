@@ -5,7 +5,7 @@
  */
 
 var assign = require('object-assign');
-var Mine = require('./lib/mine');
+var Miner = require('./lib/miner');
 var util = require('util');
 
 /**
@@ -16,14 +16,14 @@ function Au() {
   if (!(this instanceof Au)) {
     return new Au();
   }
-  Mine.call(this);
+  Miner.call(this);
 }
 
 /**
- * Inherit from Mine
+ * Inherit from Miner
  */
 
-util.inherits(Au, Mine);
+util.inherits(Au, Miner);
 
 /**
  * Sets the accessible methods on the prototype
