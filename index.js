@@ -30,7 +30,6 @@ util.inherits(Au, Miner);
  */
 
 Au.prototype = assign(Au.prototype, {
-  paginate: require('./lib/paginate'),
   extract: require('./lib/extract'),
   rename: require('./lib/rename'),
   dest: require('./lib/dest'),
