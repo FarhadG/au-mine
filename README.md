@@ -1,6 +1,6 @@
 Au
 ==
 
-Ultimate web scraper for your gold mining.
+Web scraper on streams, for your gold mining needs.
 
 By: Farhad Ghayour

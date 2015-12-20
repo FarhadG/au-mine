@@ -1,7 +1,7 @@
 {
   "name": "au",
   "version": "0.0.1",
-  "description": "Ultimate web scraper for your gold mining",
+  "description": "Web scraper on streams, for your gold mining needs",
   "main": "index.js",
   "author": "Farhad Ghayour <me@farhadg.com> (http://github.com/farhadg)",
   "license": "MIT",
