@@ -1,10 +1,9 @@
 'use strict';
 
-var normalizeList = require('./helpers').normalizeList;
-var process = require('./process');
+var normalizeList = require('./lib/helpers').normalizeList;
+var process = require('./lib/process');
 var Promise = require('bluebird');
 var mkdirp = require('mkdirp');
-var path = require('path');
 var _ = require('lodash');
 var fs = require('fs');
 
