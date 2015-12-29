@@ -1,7 +1,7 @@
 {
   "name": "au",
   "version": "0.0.1",
-  "description": "Web scraper on streams, for your gold mining needs",
+  "description": "The ultimate web scraper, for your gold mining needs.",
   "main": "index.js",
   "author": "Farhad Ghayour <me@farhadg.com> (http://github.com/farhadg)",
   "license": "MIT",
@@ -12,13 +12,19 @@
     "node-uuid": "^1.4.7",
     "object-assign": "^4.0.1",
     "path": "^0.12.7",
-    "through2": "^2.0.0"
+    "through2": "^2.0.0",
+    "bluebird": "^3.1.1",
+    "chalk": "^1.1.1",
+    "firebase": "^2.3.2",
+    "lodash": "^3.10.1",
+    "uuid": "^2.0.1"
   },
   "devDependencies": {
     "body-parser": "^1.14.1",
     "cookie-parser": "^1.4.0",
     "express": "^4.13.3",
     "mocha": "^2.3.4",
-    "should": "^7.1.1"
+    "should": "^7.1.1",
+    "nodemon": "^1.8.1"
   }
 }
